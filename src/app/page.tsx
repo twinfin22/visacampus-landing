@@ -294,7 +294,7 @@ const CTAButton = ({
 }) => (
   <a
     href="#cta"
-    className={`inline-flex items-center justify-center bg-indigo-600 text-white font-semibold hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200/50 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition-all duration-200 shadow-lg shadow-indigo-200 text-center cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${className}`}
+    className={`inline-flex items-center justify-center bg-indigo-600 text-white font-semibold hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200/50 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 shadow-lg shadow-indigo-200 text-center cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${className}`}
   >
     {children || "8주 무료 파일럿 신청"}
   </a>
@@ -315,7 +315,7 @@ const DashboardMockup = () => (
     </div>
 
     {/* Traffic light status cards */}
-    <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-3">
+    <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-3 tabular-nums">
       <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2 text-center">
         <div className="w-3.5 h-3.5 rounded-full bg-emerald-400 mx-auto mb-1 shadow-sm shadow-emerald-200" />
         <div className="text-[10px] font-bold text-emerald-700">847</div>
@@ -334,7 +334,7 @@ const DashboardMockup = () => (
     </div>
 
     {/* IEQAS gauge */}
-    <div className="bg-slate-50 rounded-lg p-2.5 border border-slate-100 mb-3">
+    <div className="bg-slate-50 rounded-lg p-2.5 border border-slate-100 mb-3 tabular-nums">
       <div className="flex items-center justify-between mb-1.5">
         <span className="text-[9px] font-medium text-slate-500">
           IEQAS 이탈률
@@ -535,7 +535,7 @@ const Nav = () => {
   return (
     <header>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 w-full z-50 transition duration-300 ${
           scrolled
             ? "bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm"
             : "bg-white/80 backdrop-blur-sm border-b border-transparent"
@@ -556,7 +556,7 @@ const Nav = () => {
           {/* Touch target: min-h-[44px] for mobile accessibility */}
           <a
             href="#cta"
-            className="inline-flex items-center min-h-[44px] bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium cursor-pointer hover:bg-indigo-700 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex items-center min-h-[44px] bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium cursor-pointer hover:bg-indigo-700 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             무료 파일럿 신청
           </a>
@@ -578,7 +578,7 @@ const Hero = () => (
 
     <div className="relative max-w-4xl mx-auto text-center">
       <h1
-        className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-5 tracking-tight"
+        className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-5 tracking-tight text-balance"
         style={{ lineHeight: 1.3 }}
       >
         유학생 비자 관리,
@@ -595,7 +595,7 @@ const Hero = () => (
         {HERO_STATS.map((stat, i) => (
           <div
             key={i}
-            className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-100 px-5 sm:px-6 py-3 sm:py-4 flex sm:flex-col items-center sm:items-center gap-3 sm:gap-2 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-gray-100 px-5 sm:px-6 py-3 sm:py-4 flex sm:flex-col items-center sm:items-center gap-3 sm:gap-2 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition duration-200"
           >
             <IconBadge name={stat.icon} color="indigo" size="sm" />
             <div className="text-sm font-medium text-gray-700">
@@ -623,7 +623,7 @@ const Problem = () => {
     >
       <div className="max-w-5xl mx-auto">
         <h2
-          className={`font-display text-xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12 transition-all duration-700 ${
+          className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-8 sm:mb-12 transition duration-700 ${
             isInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -636,7 +636,7 @@ const Problem = () => {
           {PROBLEM_CARDS.map((card, i) => (
             <div
               key={i}
-              className={`rounded-xl p-6 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg ${
+              className={`rounded-xl p-6 cursor-pointer transition duration-500 ease-out hover:-translate-y-1 hover:shadow-lg ${
                 card.urgent
                   ? "bg-gradient-to-br from-red-50 to-red-100/50 border-2 border-red-200 shadow-md relative overflow-hidden"
                   : "bg-white border border-gray-100 hover:shadow-md"
@@ -681,7 +681,7 @@ const Solution = () => {
       <div className="absolute inset-0 bg-dot-grid opacity-40" />
       <div className="relative max-w-5xl mx-auto">
         <h2
-          className={`font-display text-xl sm:text-3xl font-bold text-center text-gray-900 mb-2 sm:mb-3 transition-all duration-700 ${
+          className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-2 sm:mb-3 transition duration-700 ${
             isInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -690,7 +690,7 @@ const Solution = () => {
           VisaCampus가 도와드립니다
         </h2>
         <p
-          className={`text-center text-gray-500 text-sm sm:text-base mb-10 sm:mb-14 transition-all duration-700 delay-100 ${
+          className={`text-center text-gray-500 text-sm sm:text-base mb-10 sm:mb-14 transition duration-700 delay-100 ${
             isInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -847,7 +847,7 @@ const BeforeAfter = () => {
     >
       <div className="max-w-4xl mx-auto">
         <h2
-          className={`font-display text-xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12 transition-all duration-700 ${
+          className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-8 sm:mb-12 transition duration-700 ${
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -858,7 +858,7 @@ const BeforeAfter = () => {
           {BEFORE_AFTER_READY.map((card, i) => (
             <div
               key={i}
-              className={`bg-white rounded-xl overflow-hidden border border-gray-100 cursor-pointer hover:shadow-lg transition-all duration-500 relative ${
+              className={`bg-white rounded-xl overflow-hidden border border-gray-100 cursor-pointer hover:shadow-lg transition duration-500 relative ${
                 isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: isInView ? `${i * 120}ms` : "0ms" }}
@@ -882,7 +882,7 @@ const BeforeAfter = () => {
           {BEFORE_AFTER_COMING.map((card, i) => (
             <div
               key={i}
-              className={`bg-white rounded-xl overflow-hidden border border-gray-100 relative transition-all duration-500 ${
+              className={`bg-white rounded-xl overflow-hidden border border-gray-100 relative transition duration-500 ${
                 isInView ? "opacity-80 translate-y-0" : "opacity-0 translate-y-6"
               }`}
               style={{ transitionDelay: isInView ? `${(i + BEFORE_AFTER_READY.length) * 120}ms` : "0ms" }}
@@ -921,14 +921,14 @@ const Trust = () => {
     >
       <div className="max-w-4xl mx-auto">
         <h2
-          className={`font-display text-xl sm:text-3xl font-bold text-center text-gray-900 mb-2 sm:mb-3 transition-all duration-700 ${
+          className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-2 sm:mb-3 transition duration-700 ${
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
           개인정보, 안심하세요
         </h2>
         <p
-          className={`text-center text-gray-500 text-sm sm:text-base mb-8 sm:mb-12 transition-all duration-700 delay-100 ${
+          className={`text-center text-gray-500 text-sm sm:text-base mb-8 sm:mb-12 transition duration-700 delay-100 ${
             isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -937,7 +937,7 @@ const Trust = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
           <div
-            className={`bg-indigo-50 rounded-xl p-6 border border-indigo-100 cursor-pointer hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${
+            className={`bg-indigo-50 rounded-xl p-6 border border-indigo-100 cursor-pointer hover:-translate-y-1 hover:shadow-lg transition duration-300 ${
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
             style={{ transitionDelay: isInView ? "100ms" : "0ms" }}
@@ -954,7 +954,7 @@ const Trust = () => {
             </div>
           </div>
           <div
-            className={`bg-indigo-50 rounded-xl p-6 border border-indigo-100 cursor-pointer hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${
+            className={`bg-indigo-50 rounded-xl p-6 border border-indigo-100 cursor-pointer hover:-translate-y-1 hover:shadow-lg transition duration-300 ${
               isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
             style={{ transitionDelay: isInView ? "200ms" : "0ms" }}
@@ -1004,7 +1004,7 @@ const CTAForm = () => {
   };
 
   const inputClassName =
-    "w-full border border-gray-200 bg-gray-50/50 rounded-lg px-4 py-3 text-sm focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:shadow-[0_0_0_4px_rgba(99,102,241,0.1)] outline-none transition-all duration-200";
+    "w-full border border-gray-200 bg-gray-50/50 rounded-lg px-4 py-3 text-sm focus-visible:bg-white focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:border-indigo-500 focus-visible:shadow-[0_0_0_4px_rgba(99,102,241,0.1)] outline-none transition duration-200";
 
   return (
     <section
@@ -1016,7 +1016,7 @@ const CTAForm = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-400/20 rounded-full blur-3xl" />
 
       <div className="relative max-w-xl mx-auto text-center">
-        <h2 className="font-display text-xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">
+        <h2 className="font-display text-xl sm:text-3xl font-bold text-white mb-2 sm:mb-3 text-balance">
           8주 무료 파일럿을 시작하세요
         </h2>
         <p className="text-indigo-200 text-sm sm:text-base mb-8 sm:mb-10">
@@ -1052,8 +1052,11 @@ const CTAForm = () => {
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   required
+                  autoComplete="email"
+                  spellCheck={false}
                   placeholder="name@university.ac.kr"
                   className={inputClassName}
                   value={formData.email}
@@ -1066,9 +1069,11 @@ const CTAForm = () => {
                 </label>
                 <input
                   id="org"
+                  name="org"
                   type="text"
                   required
-                  placeholder="예: 한국대학교"
+                  autoComplete="organization"
+                  placeholder="예: 한국대학교…"
                   className={inputClassName}
                   value={formData.org}
                   onChange={(e) => setFormData({ ...formData, org: e.target.value })}
@@ -1080,9 +1085,11 @@ const CTAForm = () => {
                 </label>
                 <input
                   id="role"
+                  name="role"
                   type="text"
                   required
-                  placeholder="예: 국제교류팀"
+                  autoComplete="off"
+                  placeholder="예: 국제교류팀…"
                   className={inputClassName}
                   value={formData.role}
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
@@ -1091,7 +1098,7 @@ const CTAForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full min-h-[48px] bg-indigo-600 text-white py-3.5 rounded-xl font-semibold text-sm sm:text-base cursor-pointer hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="w-full min-h-[48px] bg-indigo-600 text-white py-3.5 rounded-xl font-semibold text-sm sm:text-base cursor-pointer hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               8주 무료 파일럿 신청하기
             </button>
@@ -1128,8 +1135,14 @@ const Footer = () => (
 export default function VisaCampusLanding() {
   return (
     <div className="min-h-screen bg-white">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-indigo-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-medium"
+      >
+        본문으로 건너뛰기
+      </a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <Problem />
         <Solution />
