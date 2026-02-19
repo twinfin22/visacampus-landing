@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "회사 소개 - VisaCampus | 대학 국제처를 위한 유학생 관리 플랫폼",
   description:
-    "VisaCampus는 대학 국제처를 위한 유학생 비자 관리 플랫폼입니다. FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 관리, AI 다국어 상담까지 한 곳에서 제공합니다.",
+    "VisaCampus는 대학 국제처를 위한 유학생 비자 관리 플랫폼입니다. FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 관리, AI 다국어 상담까지 한 곳에서 제공합니다. 8주 무료 파일럿 운영 중.",
 };
 
 export default function AboutPage() {
