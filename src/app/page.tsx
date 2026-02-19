@@ -7,6 +7,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import { supabase } from "@/lib/supabase";
 
 /* ────────────────────────────────────────────
  * Types
@@ -352,14 +353,14 @@ const DashboardMockup = () => (
         />
       </div>
       <div className="flex justify-between mt-0.5">
-        <span className="text-[7px] text-slate-400">0%</span>
+        <span className="text-[7px] text-slate-500">0%</span>
         <span className="text-[7px] text-red-400 font-medium">2% 기준선</span>
       </div>
     </div>
 
     {/* Mini data table */}
     <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
-      <div className="grid grid-cols-4 text-[8px] font-semibold text-slate-400 bg-slate-50 px-2 py-1.5 border-b border-slate-100 uppercase tracking-wider">
+      <div className="grid grid-cols-4 text-[8px] font-semibold text-slate-500 bg-slate-50 px-2 py-1.5 border-b border-slate-100 uppercase tracking-wider">
         <span>이름</span>
         <span>비자</span>
         <span>만료</span>
@@ -412,7 +413,7 @@ const ImportMockup = () => (
     {/* Column mapping */}
     <div className="bg-slate-50 rounded-lg p-2.5 border border-slate-100 mb-3">
       <div className="flex items-center gap-1.5 mb-2">
-        <span className="text-[9px] font-semibold text-slate-500">
+        <span className="text-[9px] font-semibold text-slate-600">
           AI 컬럼 매핑
         </span>
         <span className="text-[8px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full font-medium">
@@ -468,7 +469,7 @@ const ChatbotMockup = () => (
             className={`text-[7px] px-1.5 py-0.5 rounded font-bold ${
               lang === "VI"
                 ? "bg-indigo-100 text-indigo-700 ring-1 ring-indigo-300"
-                : "bg-slate-100 text-slate-400"
+                : "bg-slate-100 text-slate-500"
             }`}
           >
             {lang}
@@ -606,7 +607,7 @@ const Hero = () => (
       </div>
 
       <CTAButton className="px-8 py-3.5 min-h-[48px] rounded-xl text-base w-full sm:w-auto" />
-      <p className="text-xs text-gray-400 mt-3">
+      <p className="text-xs text-gray-500 mt-3">
         설치 없이 바로 시작 · 8주간 무료
       </p>
     </div>
@@ -760,7 +761,7 @@ const Solution = () => {
                 {FIMS_FEATURES_COMING.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-sm text-gray-400"
+                    className="flex items-center gap-2 text-sm text-gray-500"
                   >
                     <span className="w-5 h-5 flex-shrink-0" />
                     <span>
@@ -796,7 +797,7 @@ const Solution = () => {
                 {CHATBOT_FEATURES.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-sm text-gray-400"
+                    className="flex items-center gap-2 text-sm text-gray-500"
                   >
                     <span className="w-5 h-5 flex-shrink-0" />
                     <span>{f.text}</span>
@@ -997,10 +998,37 @@ const CTAForm = () => {
     role: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const { error: dbError } = await supabase.from("leads").insert({
+        email: formData.email,
+        org: formData.org,
+        role: formData.role,
+        source: "landing",
+      });
+
+      if (dbError) {
+        if (dbError.code === "23505") {
+          setError("이미 신청하셨습니다. 곧 연락드리겠습니다.");
+        } else {
+          setError("일시적인 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+        }
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("일시적인 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const inputClassName =
@@ -1096,13 +1124,19 @@ const CTAForm = () => {
                 />
               </div>
             </div>
+            {error && (
+              <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5 mb-4">
+                {error}
+              </p>
+            )}
             <button
               type="submit"
-              className="w-full min-h-[48px] bg-indigo-600 text-white py-3.5 rounded-xl font-semibold text-sm sm:text-base cursor-pointer hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              disabled={isLoading}
+              className="w-full min-h-[48px] bg-indigo-600 text-white py-3.5 rounded-xl font-semibold text-sm sm:text-base cursor-pointer hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              8주 무료 파일럿 신청하기
+              {isLoading ? "신청 중..." : "8주 무료 파일럿 신청하기"}
             </button>
-            <p className="text-xs text-gray-400 mt-4 flex items-center justify-center gap-1">
+            <p className="text-xs text-gray-500 mt-4 flex items-center justify-center gap-1">
               <Icon name="lock" className="w-3.5 h-3.5" />
               <span>입력하신 정보는 파일럿 안내 목적으로만 사용됩니다.</span>
             </p>
@@ -1114,17 +1148,54 @@ const CTAForm = () => {
 };
 
 const Footer = () => (
-  <footer className="py-8 sm:py-10 px-4 sm:px-6 bg-gray-900 text-center">
-    <div className="flex items-center justify-center gap-2 mb-3">
-      <div className="w-6 h-6 bg-indigo-600 rounded flex items-center justify-center">
-        <span className="text-white font-bold text-xs">VC</span>
+  <footer className="py-10 sm:py-14 px-4 sm:px-6 bg-gray-900">
+    <div className="max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 mb-8 pb-8 border-b border-gray-800">
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-6 h-6 bg-indigo-600 rounded flex items-center justify-center">
+              <span className="text-white font-bold text-xs">VC</span>
+            </div>
+            <span className="font-semibold text-white">VisaCampus</span>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 보고 간소화부터 IEQAS
+            이탈률 모니터링까지.
+          </p>
+        </div>
+
+        {/* About */}
+        <div>
+          <h3 className="text-white font-semibold text-sm mb-3">서비스 소개</h3>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li>통합 학생 관리 대시보드</li>
+            <li>FIMS 정기보고 간소화</li>
+            <li>IEQAS 이탈률 실시간 추적</li>
+            <li>AI 다국어 상담봇 (출시 예정)</li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h3 className="text-white font-semibold text-sm mb-3">문의하기</h3>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li>
+              <a
+                href="mailto:contact@visacampus.org"
+                className="hover:text-white transition-colors"
+              >
+                contact@visacampus.org
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <span className="font-semibold text-white">VisaCampus</span>
+
+      <p className="text-center text-gray-500 text-xs">
+        &copy; {new Date().getFullYear()} VisaCampus. All rights reserved.
+      </p>
     </div>
-    <p className="text-gray-400 text-sm mb-2">
-      대학 국제처를 위한 유학생 관리 플랫폼
-    </p>
-    <p className="text-gray-500 text-xs">contact@visacampus.org</p>
   </footer>
 );
 
