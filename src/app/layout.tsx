@@ -38,6 +38,31 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  name: "VisaCampus",
+                  url: "https://www.visacampus.org",
+                  logo: "https://www.visacampus.org/favicon.svg",
+                  email: "contact@visacampus.org",
+                  description:
+                    "대학 국제처를 위한 유학생 비자 관리 플랫폼",
+                },
+                {
+                  "@type": "WebSite",
+                  name: "VisaCampus",
+                  url: "https://www.visacampus.org",
+                  inLanguage: "ko",
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>

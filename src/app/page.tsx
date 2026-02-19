@@ -19,6 +19,11 @@ interface PilotFormData {
   role: string;
 }
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 interface ProblemCard {
   icon: string;
   iconColor: string;
@@ -228,6 +233,39 @@ const RBAC_ITEMS: TrustItem[] = [
   { text: "관리자 / 매니저 / 열람자 3단계 권한" },
   { text: "민감 정보는 권한에 따라 마스킹 처리" },
   { text: "모든 데이터 조회·수정 이력 기록" },
+];
+
+const FAQ_ITEMS: FAQItem[] = [
+  {
+    question: "무료 파일럿은 어떻게 진행되나요?",
+    answer:
+      "신청서를 제출하시면 2영업일 이내에 연락드립니다. 별도 설치 없이 웹 브라우저에서 바로 시작할 수 있으며, 8주간 모든 기능을 무료로 사용하실 수 있습니다. 파일럿 기간 중 전담 지원을 제공합니다.",
+  },
+  {
+    question: "기존 엑셀 데이터를 가져올 수 있나요?",
+    answer:
+      "네, 기존에 사용하시던 엑셀/CSV 파일을 업로드하면 AI가 자동으로 컬럼을 매핑합니다. 수백 건의 학생 데이터를 한 번에 가져올 수 있어, 데이터 이관에 별도 시간이 거의 들지 않습니다.",
+  },
+  {
+    question: "FIMS와 직접 연동되나요?",
+    answer:
+      "FIMS(외국인유학생정보시스템)는 공개 API를 제공하지 않아 직접 연동은 불가합니다. 대신 FIMS 호환 엑셀 파일을 자동 생성하여, 정기보고 시 그대로 업로드할 수 있도록 지원합니다.",
+  },
+  {
+    question: "개인정보는 어떻게 보호되나요?",
+    answer:
+      "모든 데이터는 AWS 서울 리전에서 국내에 보관됩니다. 여권번호, 외국인등록번호 등 민감정보는 AES-256으로 암호화하며, 3단계 역할 기반 접근 제어와 감사 로그로 모든 접근을 기록합니다. AI 기능 사용 시에도 원본 개인정보는 절대 외부로 전송되지 않습니다.",
+  },
+  {
+    question: "어떤 규모의 대학에서 사용할 수 있나요?",
+    answer:
+      "유학생 수 100명 이상의 대학에 적합합니다. 1,000명 이상의 대규모 대학도 지원하며, 대량 데이터 로딩과 가상 스크롤 기능으로 성능 저하 없이 사용할 수 있습니다.",
+  },
+  {
+    question: "파일럿이 끝나면 데이터는 어떻게 되나요?",
+    answer:
+      "파일럿 종료 후에도 엑셀/CSV 형식으로 전체 데이터를 내보낼 수 있습니다. 유료 전환 여부와 관계없이 데이터 소유권은 대학에 있으며, 요청 시 서버에서 완전히 삭제합니다.",
+  },
 ];
 
 /* ────────────────────────────────────────────
@@ -991,6 +1029,93 @@ const Trust = () => {
   );
 };
 
+const FAQ = () => {
+  const { ref, isInView } = useInView(0.1);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-14 sm:py-20 px-4 sm:px-6 bg-gray-50"
+    >
+      <div className="max-w-3xl mx-auto">
+        <h2
+          className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-2 sm:mb-3 transition duration-700 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          자주 묻는 질문
+        </h2>
+        <p
+          className={`text-center text-gray-500 text-sm sm:text-base mb-8 sm:mb-12 transition duration-700 delay-100 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          파일럿 신청 전 궁금한 점을 확인하세요
+        </p>
+
+        <div className="space-y-3">
+          {FAQ_ITEMS.map((item, i) => (
+            <div
+              key={i}
+              className={`bg-white rounded-xl border border-gray-100 overflow-hidden transition duration-500 ${
+                isInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{
+                transitionDelay: isInView ? `${i * 80}ms` : "0ms",
+              }}
+            >
+              <button
+                type="button"
+                className="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer hover:bg-gray-50 transition-colors"
+                onClick={() =>
+                  setOpenIndex(openIndex === i ? null : i)
+                }
+                aria-expanded={openIndex === i}
+              >
+                <span className="text-sm font-semibold text-gray-900 pr-4">
+                  {item.question}
+                </span>
+                <svg
+                  className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 ${
+                    openIndex === i ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                className={`grid transition-all duration-200 ${
+                  openIndex === i
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">
+                    {item.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const CTAForm = () => {
   const [formData, setFormData] = useState<PilotFormData>({
     email: "",
@@ -1229,9 +1354,66 @@ export default function VisaCampusLanding() {
         <Solution />
         <BeforeAfter />
         <Trust />
+        <FAQ />
         <CTAForm />
       </main>
       <Footer />
+
+      {/* FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ_ITEMS.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            })),
+          }),
+        }}
+      />
+
+      {/* SoftwareApplication JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "VisaCampus",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            url: "https://www.visacampus.org",
+            description:
+              "대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 정기보고 간소화, 비자 만료 캘린더, IEQAS 이탈률 실시간 모니터링.",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "KRW",
+              description: "8주 무료 파일럿",
+            },
+            provider: {
+              "@type": "Organization",
+              name: "VisaCampus",
+              url: "https://www.visacampus.org",
+            },
+            featureList: [
+              "통합 학생 관리 대시보드",
+              "FIMS 정기보고 간소화",
+              "IEQAS 이탈률 실시간 모니터링",
+              "비자 만료 캘린더",
+              "엑셀 대량 업로드 + AI 컬럼 매핑",
+              "AI 다국어 상담봇",
+            ],
+            inLanguage: "ko",
+          }),
+        }}
+      />
     </div>
   );
 }
