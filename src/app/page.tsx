@@ -892,7 +892,7 @@ const BeforeAfter = () => {
                 <div className="flex-1 p-5 sm:p-6 bg-red-50/30 border-b sm:border-b-0 sm:border-r border-gray-100">
                   <div className="text-xs font-bold text-red-300 uppercase tracking-wide mb-2">Before</div>
                   <h3 className="font-semibold text-gray-700 text-sm mb-1">{card.title}</h3>
-                  <p className="text-sm text-gray-400">{card.before}</p>
+                  <p className="text-sm text-gray-500">{card.before}</p>
                 </div>
                 <ArrowDivider />
                 <div className="flex-1 p-5 sm:p-6 bg-emerald-50/30">
@@ -980,7 +980,7 @@ const Trust = () => {
                 무료 체험이 끝나도 데이터는 언제든 내보낼 수 있습니다.
               </span>
               <br className="sm:hidden" />
-              <span className="text-gray-400 sm:ml-2">
+              <span className="text-gray-500 sm:ml-2">
                 엑셀/CSV 형식으로 전체 데이터 엑스포트를 지원합니다.
               </span>
             </p>
@@ -1159,7 +1159,7 @@ const Footer = () => (
             </div>
             <span className="font-semibold text-white">VisaCampus</span>
           </div>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p className="text-gray-300 text-sm leading-relaxed">
             대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 보고 간소화부터 IEQAS
             이탈률 모니터링까지.
           </p>
@@ -1168,7 +1168,7 @@ const Footer = () => (
         {/* About */}
         <div>
           <h3 className="text-white font-semibold text-sm mb-3">서비스 소개</h3>
-          <ul className="space-y-2 text-sm text-gray-400">
+          <ul className="space-y-2 text-sm text-gray-300">
             <li>통합 학생 관리 대시보드</li>
             <li>FIMS 정기보고 간소화</li>
             <li>IEQAS 이탈률 실시간 추적</li>
@@ -1179,13 +1179,23 @@ const Footer = () => (
         {/* Contact */}
         <div>
           <h3 className="text-white font-semibold text-sm mb-3">문의하기</h3>
-          <ul className="space-y-2 text-sm text-gray-400">
+          <ul className="space-y-2 text-sm text-gray-300">
             <li>
               <a
                 href="mailto:contact@visacampus.org"
                 className="hover:text-white transition-colors"
               >
                 contact@visacampus.org
+              </a>
+            </li>
+            <li>
+              <a href="/about" className="hover:text-white transition-colors">
+                회사 소개
+              </a>
+            </li>
+            <li>
+              <a href="/privacy" className="hover:text-white transition-colors">
+                개인정보 처리방침
               </a>
             </li>
           </ul>
