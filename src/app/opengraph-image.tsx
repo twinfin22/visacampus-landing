@@ -1,67 +1,108 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt =
-  "VisaCampus - 대학 국제처를 위한 유학생 비자 관리 플랫폼";
+export const alt = "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+export default async function OGImage() {
+  const montserrat = await fetch(
+    new URL(
+      "https://fonts.gstatic.com/s/montserrat/v29/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-Y3tcoqK5.ttf"
+    )
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
           width: "100%",
           height: "100%",
-          background: "linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)",
-          color: "white",
-          fontFamily: "system-ui, sans-serif",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          background:
+            "linear-gradient(135deg, #1E3A5F 0%, #172e4d 50%, #112240 100%)",
+          position: "relative",
         }}
       >
+        {/* Subtle glow */}
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-            marginBottom: "24px",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 600,
+            height: 600,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* Logo text */}
+        <div
+          style={{
+            fontFamily: "Montserrat",
+            fontSize: 64,
+            fontWeight: 700,
+            color: "#ffffff",
+            letterSpacing: "-1px",
+            marginBottom: 24,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              width: "64px",
-              height: "64px",
-              background: "rgba(255,255,255,0.2)",
-              borderRadius: "16px",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "28px",
-              fontWeight: 700,
-            }}
-          >
-            VC
-          </div>
-          <span style={{ fontSize: "48px", fontWeight: 700 }}>VisaCampus</span>
+          VisaCampus
         </div>
+
+        {/* Tagline */}
         <div
           style={{
-            fontSize: "32px",
-            opacity: 0.9,
+            fontSize: 28,
+            color: "#BAE6FD",
             textAlign: "center",
-            maxWidth: "800px",
+            lineHeight: 1.5,
           }}
         >
           유학생 비자 관리, 엑셀에서 벗어나세요
         </div>
-        <div style={{ fontSize: "20px", opacity: 0.7, marginTop: "16px" }}>
-          대학 국제처를 위한 유학생 관리 플랫폼
+
+        {/* Sub-tagline */}
+        <div
+          style={{
+            fontSize: 18,
+            color: "#7DD3FC",
+            marginTop: 16,
+            textAlign: "center",
+          }}
+        >
+          FIMS 보고 · 비자 만료 관리 · IEQAS 모니터링 · AI 상담
+        </div>
+
+        {/* URL */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 40,
+            fontSize: 16,
+            color: "#7DD3FC",
+          }}
+        >
+          www.visacampus.org
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [
+        {
+          name: "Montserrat",
+          data: montserrat,
+          weight: 700,
+          style: "normal",
+        },
+      ],
+    }
   );
 }
