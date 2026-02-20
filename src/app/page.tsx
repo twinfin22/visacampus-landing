@@ -171,7 +171,7 @@ const PROBLEM_CARDS: ProblemCard[] = [
   {
     icon: "alert",
     iconColor: "red",
-    title: "2년간 44개 대학이 비자 발급 제한을 받았습니다",
+    title: "지난 2년간 44개 대학이 비자 발급 제한을 받았습니다",
     desc: "IEQAS 불법체류율 2% 초과 시 인증 위험. 실시간 모니터링 수단이 없습니다.",
     urgent: true,
   },
