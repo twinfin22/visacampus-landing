@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/icon.png",
   },
   openGraph: {
     title: "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요",
@@ -20,6 +20,21 @@ export const metadata: Metadata = {
     siteName: "VisaCampus",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요",
+    description:
+      "대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 정기보고 간소화, 비자 만료 캘린더, IEQAS 이탈률 실시간 모니터링까지 한 곳에서.",
+    images: ["/og-image.png"],
   },
   other: {
     "theme-color": "#1E3A5F",
@@ -36,6 +51,8 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -46,7 +63,7 @@ export default function RootLayout({
                   "@type": "Organization",
                   name: "VisaCampus",
                   url: "https://www.visacampus.org",
-                  logo: "https://www.visacampus.org/favicon.svg",
+                  logo: "https://www.visacampus.org/logo.png",
                   email: "contact@visacampus.org",
                   description:
                     "대학 국제처를 위한 유학생 비자 관리 플랫폼",

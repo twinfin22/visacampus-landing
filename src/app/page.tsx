@@ -7,6 +7,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+
 import { supabase } from "@/lib/supabase";
 
 /* ────────────────────────────────────────────
@@ -107,6 +108,7 @@ const Icon = ({
 
 const BADGE_STYLES: Record<string, string> = {
   indigo: "bg-indigo-100 text-indigo-600",
+  "indigo-light": "bg-white/15 text-indigo-200",
   amber: "bg-amber-100 text-amber-600",
   red: "bg-red-100 text-red-600",
   emerald: "bg-emerald-100 text-emerald-600",
@@ -169,7 +171,7 @@ const PROBLEM_CARDS: ProblemCard[] = [
   {
     icon: "alert",
     iconColor: "red",
-    title: "44개 대학이 비자 발급 제한을 받았습니다",
+    title: "2년간 44개 대학이 비자 발급 제한을 받았습니다",
     desc: "IEQAS 불법체류율 2% 초과 시 인증 위험. 실시간 모니터링 수단이 없습니다.",
     urgent: true,
   },
@@ -301,9 +303,9 @@ const useInView = (threshold = 0.15) => {
  * Shared Components
  * ──────────────────────────────────────────── */
 
-const CheckIcon = () => (
+const CheckIcon = ({ className = "text-emerald-500" }: { className?: string }) => (
   <svg
-    className="w-5 h-5 text-emerald-500 flex-shrink-0"
+    className={`w-5 h-5 flex-shrink-0 ${className}`}
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
@@ -318,8 +320,14 @@ const CheckIcon = () => (
   </svg>
 );
 
-const ComingSoonBadge = () => (
-  <span className="inline-flex items-center bg-amber-50 text-amber-700 text-xs font-medium px-2 py-0.5 rounded-full border border-amber-200">
+const ComingSoonBadge = ({ dark }: { dark?: boolean }) => (
+  <span
+    className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full border ${
+      dark
+        ? "bg-amber-400/10 text-amber-300 border-amber-400/30"
+        : "bg-amber-50 text-amber-700 border-amber-200"
+    }`}
+  >
     출시 예정
   </span>
 );
@@ -327,13 +335,19 @@ const ComingSoonBadge = () => (
 const CTAButton = ({
   className = "",
   children,
+  variant = "dark",
 }: {
   className?: string;
   children?: ReactNode;
+  variant?: "dark" | "light";
 }) => (
   <a
     href="#cta"
-    className={`inline-flex items-center justify-center bg-indigo-600 text-white font-semibold hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200/50 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 shadow-lg shadow-indigo-200 text-center cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${className}`}
+    className={`inline-flex items-center justify-center font-semibold hover:-translate-y-0.5 active:translate-y-0 transition duration-200 text-center cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 ${
+      variant === "light"
+        ? "bg-white text-indigo-700 hover:bg-indigo-50 shadow-lg shadow-indigo-900/20 focus-visible:outline-white"
+        : "bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200/50 active:bg-indigo-800 shadow-lg shadow-indigo-200 focus-visible:outline-indigo-600"
+    } ${className}`}
   >
     {children || "8주 무료 파일럿 신청"}
   </a>
@@ -576,22 +590,15 @@ const Nav = () => {
       <nav
         className={`fixed top-0 w-full z-50 transition duration-300 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm"
-            : "bg-white/80 backdrop-blur-sm border-b border-transparent"
+            ? "bg-white border-b border-gray-200 shadow-sm"
+            : "bg-white border-b border-gray-100"
         }`}
         aria-label="메인 내비게이션"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xs sm:text-sm">
-                VC
-              </span>
-            </div>
-            <span className="font-bold text-base sm:text-lg text-gray-900">
-              VisaCampus
-            </span>
-          </div>
+          <span className="text-lg sm:text-xl font-bold text-indigo-700 tracking-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            VisaCampus
+          </span>
           {/* Touch target: min-h-[44px] for mobile accessibility */}
           <a
             href="#cta"
@@ -625,9 +632,7 @@ const Hero = () => (
         <span className="text-indigo-600">엑셀에서 벗어나세요</span>
       </h1>
       <p className="text-base sm:text-lg text-gray-500 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-        FIMS 보고부터 비자 만료 관리까지, 한 곳에서.
-        <br />
-        대학 국제처를 위한 유학생 관리 플랫폼
+        FIMS 보고부터 비자 만료 관리까지, 한 곳에서
       </p>
 
       <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-10">
@@ -658,7 +663,7 @@ const Problem = () => {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="py-14 sm:py-20 px-4 sm:px-6 bg-gray-50"
+      className="py-14 sm:py-20 px-4 sm:px-6"
     >
       <div className="max-w-5xl mx-auto">
         <h2
@@ -715,12 +720,14 @@ const Solution = () => {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="py-14 sm:py-20 px-4 sm:px-6 relative"
+      className="py-14 sm:py-20 px-4 sm:px-6 relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-dot-grid opacity-40" />
+      <div className="absolute inset-0 bg-dot-grid opacity-[0.08]" />
+      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-400/15 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-indigo-400/10 rounded-full blur-3xl" />
       <div className="relative max-w-5xl mx-auto">
         <h2
-          className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-2 sm:mb-3 transition duration-700 ${
+          className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-white mb-2 sm:mb-3 transition duration-700 ${
             isInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -729,7 +736,7 @@ const Solution = () => {
           VisaCampus가 도와드립니다
         </h2>
         <p
-          className={`text-center text-gray-500 text-sm sm:text-base mb-10 sm:mb-14 transition duration-700 delay-100 ${
+          className={`text-center text-indigo-200 text-sm sm:text-base mb-10 sm:mb-14 transition duration-700 delay-100 ${
             isInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -743,14 +750,14 @@ const Solution = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10">
             <div className="flex-1">
               <div className="mb-2">
-                <span className="text-sm font-semibold text-indigo-600">
+                <span className="text-sm font-semibold text-indigo-300">
                   기능 01
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-white mb-3">
                 통합 학생 관리 대시보드
               </h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
+              <p className="text-indigo-100 mb-4 leading-relaxed">
                 한 화면에서 전체 유학생 현황을 파악합니다. 위험 학생을 신호등
                 시스템으로 즉시 식별하고, 비자 만료 일정을 놓치지 않도록
                 알려드립니다.
@@ -759,9 +766,9 @@ const Solution = () => {
                 {DASHBOARD_FEATURES.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-sm text-gray-700"
+                    className="flex items-center gap-2 text-sm text-indigo-100"
                   >
-                    <CheckIcon />
+                    <CheckIcon className="text-emerald-400" />
                     <span>{f.text}</span>
                   </div>
                 ))}
@@ -774,15 +781,15 @@ const Solution = () => {
           <div className="flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-10">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-sm font-semibold text-indigo-600">
+                <span className="text-sm font-semibold text-indigo-300">
                   기능 02
                 </span>
-                <ComingSoonBadge />
+                <ComingSoonBadge dark />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-white mb-3">
                 FIMS 보고 간소화
               </h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
+              <p className="text-indigo-100 mb-4 leading-relaxed">
                 정기보고(연 4회)용 FIMS 호환 엑셀을 자동 생성하고, 학생 상태
                 변경 시 변동신고 기한을 자동으로 알려드립니다.
               </p>
@@ -790,21 +797,21 @@ const Solution = () => {
                 {FIMS_FEATURES_READY.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-sm text-gray-700"
+                    className="flex items-center gap-2 text-sm text-indigo-100"
                   >
-                    <CheckIcon />
+                    <CheckIcon className="text-emerald-400" />
                     <span>{f.text}</span>
                   </div>
                 ))}
                 {FIMS_FEATURES_COMING.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-sm text-gray-500"
+                    className="flex items-center gap-2 text-sm text-indigo-300"
                   >
                     <span className="w-5 h-5 flex-shrink-0" />
                     <span>
                       {f.text}{" "}
-                      <span className="text-amber-500 text-xs">
+                      <span className="text-amber-300 text-xs">
                         (출시 예정)
                       </span>
                     </span>
@@ -819,15 +826,15 @@ const Solution = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-sm font-semibold text-indigo-600">
+                <span className="text-sm font-semibold text-indigo-300">
                   기능 03
                 </span>
-                <ComingSoonBadge />
+                <ComingSoonBadge dark />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-white mb-3">
                 AI 다국어 상담봇
               </h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
+              <p className="text-indigo-100 mb-4 leading-relaxed">
                 6개 언어로 비자 절차, 필요 서류, 기한을 자동 안내합니다. 복잡한
                 질문은 담당자에게 자동으로 전달됩니다.
               </p>
@@ -835,7 +842,7 @@ const Solution = () => {
                 {CHATBOT_FEATURES.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2 text-sm text-gray-500"
+                    className="flex items-center gap-2 text-sm text-indigo-300"
                   >
                     <span className="w-5 h-5 flex-shrink-0" />
                     <span>{f.text}</span>
@@ -882,7 +889,7 @@ const BeforeAfter = () => {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="py-14 sm:py-20 px-4 sm:px-6 bg-gray-50"
+      className="py-14 sm:py-20 px-4 sm:px-6"
     >
       <div className="max-w-4xl mx-auto">
         <h2
@@ -956,7 +963,7 @@ const Trust = () => {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="py-14 sm:py-20 px-4 sm:px-6"
+      className="py-14 sm:py-20 px-4 sm:px-6 bg-gray-50"
     >
       <div className="max-w-4xl mx-auto">
         <h2
@@ -1036,7 +1043,7 @@ const FAQ = () => {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="py-14 sm:py-20 px-4 sm:px-6 bg-gray-50"
+      className="py-14 sm:py-20 px-4 sm:px-6"
     >
       <div className="max-w-3xl mx-auto">
         <h2
@@ -1278,12 +1285,9 @@ const Footer = () => (
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 mb-8 pb-8 border-b border-gray-800">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-6 h-6 bg-indigo-600 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-xs">VC</span>
-            </div>
-            <span className="font-semibold text-white">VisaCampus</span>
-          </div>
+          <span className="text-lg font-bold text-white tracking-tight mb-3 inline-block" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            VisaCampus
+          </span>
           <p className="text-gray-300 text-sm leading-relaxed">
             대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 보고 간소화부터 IEQAS
             이탈률 모니터링까지.
