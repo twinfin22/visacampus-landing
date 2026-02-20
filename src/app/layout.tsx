@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   other: {
-    "theme-color": "#4F46E5",
+    "theme-color": "#1E3A5F",
     "color-scheme": "light",
   },
 };
@@ -36,8 +36,6 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

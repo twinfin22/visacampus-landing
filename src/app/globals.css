@@ -1,10 +1,23 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap");
 @import "tailwindcss";
 
 @theme inline {
   --font-pretendard: "Pretendard Variable", Pretendard, "Segoe UI",
     -apple-system, system-ui, sans-serif;
+
+  /* Navy + Sky palette (replaces default indigo/violet) */
+  --color-indigo-50: #F8FAFC;
+  --color-indigo-100: #E0F2FE;
+  --color-indigo-200: #BAE6FD;
+  --color-indigo-300: #7DD3FC;
+  --color-indigo-400: #3B82F6;
+  --color-indigo-500: #3B82F6;
+  --color-indigo-600: #1E3A5F;
+  --color-indigo-700: #172e4d;
+  --color-indigo-800: #112240;
+  --color-indigo-900: #0d1a30;
+  --color-violet-200: #BAE6FD;
+  --color-violet-700: #3B82F6;
 }
 
 html {
@@ -18,16 +31,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Display heading font */
+/* Display heading font — Pretendard ExtraBold */
 .font-display {
-  font-family: "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-weight: 800;
 }
 
 /* Dot grid background pattern */
 .bg-dot-grid {
   background-image: radial-gradient(
     circle,
-    rgba(99, 102, 241, 0.06) 1px,
+    rgba(30, 58, 95, 0.06) 1px,
     transparent 1px
   );
   background-size: 24px 24px;
