@@ -1290,14 +1290,30 @@ const Footer = () => (
           </p>
         </div>
 
-        {/* About */}
+        {/* Links */}
         <div>
-          <h3 className="text-white font-semibold text-sm mb-3">서비스 소개</h3>
+          <h3 className="text-white font-semibold text-sm mb-3">안내</h3>
           <ul className="space-y-2 text-sm text-gray-300">
-            <li>통합 학생 관리 대시보드</li>
-            <li>FIMS 정기보고 간소화</li>
-            <li>IEQAS 이탈률 실시간 추적</li>
-            <li>AI 다국어 상담봇 (출시 예정)</li>
+            <li>
+              <a href="/about" className="hover:text-white transition-colors">
+                회사 소개
+              </a>
+            </li>
+            <li>
+              <a href="/tos" className="hover:text-white transition-colors">
+                이용약관
+              </a>
+            </li>
+            <li>
+              <a href="/policy/privacy" className="hover:text-white transition-colors">
+                개인정보 처리방침
+              </a>
+            </li>
+            <li>
+              <a href="/refund" className="hover:text-white transition-colors">
+                환불규정
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -1311,16 +1327,6 @@ const Footer = () => (
                 className="hover:text-white transition-colors"
               >
                 contact@visacampus.org
-              </a>
-            </li>
-            <li>
-              <a href="/about" className="hover:text-white transition-colors">
-                회사 소개
-              </a>
-            </li>
-            <li>
-              <a href="/privacy" className="hover:text-white transition-colors">
-                개인정보 처리방침
               </a>
             </li>
           </ul>
