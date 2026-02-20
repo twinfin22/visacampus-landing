@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요";
+export const alt = "VisaCampus - 엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

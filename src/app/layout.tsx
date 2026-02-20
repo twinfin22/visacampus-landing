@@ -3,9 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.visacampus.org"),
-  title: "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요",
+  title: "VisaCampus",
   description:
-    "대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 정기보고 간소화, 비자 만료 캘린더, IEQAS 이탈률 실시간 모니터링, AI 다국어 상담까지 한 곳에서 관리하세요. 8주 무료 파일럿 신청. 설치 없이 바로 시작.",
+    "엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요",
   alternates: {
     canonical: "/",
   },
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     icon: "/icon.png",
   },
   openGraph: {
-    title: "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요",
+    title: "VisaCampus",
     description:
-      "대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 정기보고 간소화, 비자 만료 캘린더, IEQAS 이탈률 실시간 모니터링까지 한 곳에서.",
+      "엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요",
     url: "https://www.visacampus.org",
     siteName: "VisaCampus",
     locale: "ko_KR",
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VisaCampus - 유학생 비자 관리, 엑셀에서 벗어나세요",
+    title: "VisaCampus",
     description:
-      "대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 정기보고 간소화, 비자 만료 캘린더, IEQAS 이탈률 실시간 모니터링까지 한 곳에서.",
+      "엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요",
   },
   other: {
     "theme-color": "#1E3A5F",
