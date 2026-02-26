@@ -49,7 +49,7 @@ export default function LegalLayout({
             </div>
             <span className="text-sm font-semibold text-white">VisaCampus</span>
           </div>
-          <nav className="flex items-center gap-6 text-sm text-gray-400">
+          <nav className="flex items-center gap-6 text-sm text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">
               홈
             </Link>

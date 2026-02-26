@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/components/legal-layout";
 
 export const metadata: Metadata = {
-  title: "이용약관 - VisaCampus",
+  title: "이용약관 - VisaCampus | 유학생 비자 관리 SaaS 이용 조건",
   description:
-    "VisaCampus 서비스 이용약관. 대학 국제처를 위한 유학생 비자 관리 SaaS 대시보드 툴의 이용 조건을 안내합니다.",
+    "VisaCampus 서비스 이용약관. 대학 국제처를 위한 유학생 비자 관리 SaaS 대시보드의 이용 조건, 데이터 소유권, 결제·환불, 해지 절차 등 서비스 이용에 필요한 모든 사항을 안내합니다.",
 };
 
 export default function TosPage() {
@@ -434,7 +434,30 @@ export default function TosPage() {
         <section>
           <h2 className="text-lg font-bold text-gray-900 mb-3">부칙</h2>
           <p>본 약관은 2026년 2월 20일부터 시행됩니다.</p>
-          <p className="mt-2 font-medium">변경 이력</p>
+
+          <h3 className="font-bold text-gray-800 mb-2 mt-4">
+            사업자 정보
+          </h3>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <ul className="space-y-1">
+              <li>상호: 불편함</li>
+              <li>대표자: 이승은</li>
+              <li>소재지: [사업장 주소]</li>
+              <li>사업자등록번호: [등록 후 기재]</li>
+              <li>통신판매업 신고번호: [신고 후 기재]</li>
+              <li>
+                연락처:{" "}
+                <a
+                  href="mailto:contact@visacampus.org"
+                  className="text-indigo-600 hover:text-indigo-700"
+                >
+                  contact@visacampus.org
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <p className="mt-4 font-medium">변경 이력</p>
           <ul className="list-disc pl-5 mt-1">
             <li>2026-02-20: 최초 시행</li>
           </ul>

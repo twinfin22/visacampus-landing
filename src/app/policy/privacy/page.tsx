@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "개인정보 처리방침 - VisaCampus | 유학생 개인정보 보호 정책",
   description:
-    "VisaCampus 개인정보 처리방침. AES-256-GCM 암호화, 3단계 역할 기반 접근 권한 관리로 유학생 개인정보를 안전하게 보호합니다.",
+    "VisaCampus 개인정보 처리방침. AES-256-GCM 암호화, 3단계 역할 기반 접근 제어, 감사 로그 기록으로 유학생 개인정보를 안전하게 보호합니다. AWS 서울 리전 국내 데이터 보관.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
             1. 회원 가입 및 서비스 이용
           </h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="회원 가입 및 서비스 이용 수집 항목">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">
@@ -94,7 +94,7 @@ export default function PrivacyPolicyPage() {
             책임은 회원(위탁자)에 있습니다.
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="유학생 개인정보 위탁 처리 항목">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">
@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
             3. 고유식별정보
           </h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="고유식별정보 처리 항목">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">
@@ -167,7 +167,7 @@ export default function PrivacyPolicyPage() {
             4. 비회원 (파일럿 신청)
           </h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="비회원 파일럿 신청 수집 항목">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">
@@ -245,7 +245,7 @@ export default function PrivacyPolicyPage() {
             자동수집 정보 및 분석 도구
           </h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="자동수집 정보 및 분석 도구">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">
@@ -312,7 +312,7 @@ export default function PrivacyPolicyPage() {
             관련 법령에 따른 의무 보존 기간
           </h3>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="관련 법령에 따른 의무 보존 기간">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">
@@ -379,7 +379,7 @@ export default function PrivacyPolicyPage() {
             개인정보를 안전하게 처리하는지를 감독하고 있습니다.
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="개인정보 처리 위탁 현황">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">
@@ -444,10 +444,9 @@ export default function PrivacyPolicyPage() {
             제8조 (개인정보의 국외 이전)
           </h2>
           <p>
-            유학생 데이터는 Supabase(AWS 서울 리전, ap-northeast-2)에 보관되어
-            국내 데이터 거주 요건을 충족합니다. 웹 애플리케이션 호스팅을 위해
-            Vercel(미국)에 일부 요청 데이터가 전송될 수 있으나, 유학생
-            개인정보는 국내 서버에 저장·관리됩니다.
+            회사는 이용자의 개인정보를 국외로 이전하지 않습니다. 모든
+            개인정보는 국내 서버(AWS 서울 리전, ap-northeast-2)에서만
+            저장·처리되며, 국내 데이터 거주 요건을 충족합니다.
           </p>
         </section>
 
@@ -492,7 +491,20 @@ export default function PrivacyPolicyPage() {
         {/* 제10조 */}
         <section>
           <h2 className="text-lg font-bold text-gray-900 mb-3">
-            제10조 (이용자 및 법정대리인의 권리와 그 행사 방법)
+            제10조 (자동화된 의사결정에 관한 사항)
+          </h2>
+          <p>
+            현재 회사는 이용자에게 법적 효과 또는 중대한 영향을 미치는
+            자동화된 의사결정 시스템을 운영하지 않습니다. 향후 이러한 시스템을
+            도입하는 경우, 그 존재와 로직, 이용자의 거부·설명 요구 권리를 본
+            방침에 사전 고지합니다.
+          </p>
+        </section>
+
+        {/* 제11조 */}
+        <section>
+          <h2 className="text-lg font-bold text-gray-900 mb-3">
+            제11조 (이용자 및 법정대리인의 권리와 그 행사 방법)
           </h2>
           <h3 className="font-bold text-gray-800 mb-2">
             이용자의 권리 및 행사 방법
@@ -509,16 +521,23 @@ export default function PrivacyPolicyPage() {
               요구할 수 있습니다.
             </li>
             <li>
-              회사는 정정 또는 삭제 요청을 받은 경우, 정정 또는 삭제를 완료하기
+              <strong>개인정보 전송요구권</strong>: 이용자는 개인정보보호법
+              제35조의2에 따라 본인의 개인정보를 본인 또는 제3자에게 전송하도록
+              요구할 수 있습니다. 전송 요청은 이메일
+              (contact@visacampus.org)로 접수하며, 접수일로부터 10영업일
+              이내에 구조화된 형식(CSV 또는 JSON)으로 제공합니다.
+            </li>
+            <li>
+              회사는 정정, 삭제 또는 전송 요청을 받은 경우, 처리를 완료하기
               전까지 해당 개인정보를 이용하거나 제공하지 않습니다.
             </li>
           </ol>
         </section>
 
-        {/* 제11조 */}
+        {/* 제12조 */}
         <section>
           <h2 className="text-lg font-bold text-gray-900 mb-3">
-            제11조 (개인정보 보호책임자 및 권익침해 구제방법)
+            제12조 (개인정보 보호책임자 및 권익침해 구제방법)
           </h2>
           <p className="mb-3">
             회사는 개인정보 처리에 관한 업무를 총괄하여 책임지고, 이용자의
@@ -563,10 +582,10 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        {/* 제12조 */}
+        {/* 제13조 */}
         <section>
           <h2 className="text-lg font-bold text-gray-900 mb-3">
-            제12조 (개인정보 처리방침 변경에 관한 사항)
+            제13조 (개인정보 처리방침 변경에 관한 사항)
           </h2>
           <p>
             개인정보 처리방침은 시행일로부터 적용되며, 관련 법령 및 방침에 따른

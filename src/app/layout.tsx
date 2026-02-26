@@ -3,9 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.visacampus.org"),
-  title: "VisaCampus",
+  title: "VisaCampus | FIMS 보고부터 비자 만료 관리까지, 유학생 비자 관리 플랫폼",
   description:
-    "엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요",
+    "FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더, AI 다국어 상담까지. 대학 국제처의 유학생 비자 업무를 하나의 대시보드로 통합합니다. 8주 무료 파일럿 운영 중.",
   alternates: {
     canonical: "/",
   },
@@ -13,9 +13,10 @@ export const metadata: Metadata = {
     icon: "/icon.png",
   },
   openGraph: {
-    title: "VisaCampus",
+    title:
+      "VisaCampus | FIMS 보고부터 비자 만료 관리까지, 유학생 비자 관리 플랫폼",
     description:
-      "엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요",
+      "FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더, AI 다국어 상담까지. 대학 국제처의 유학생 비자 업무를 하나의 대시보드로 통합합니다. 8주 무료 파일럿 운영 중.",
     url: "https://www.visacampus.org",
     siteName: "VisaCampus",
     locale: "ko_KR",
@@ -23,9 +24,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VisaCampus",
+    title:
+      "VisaCampus | FIMS 보고부터 비자 만료 관리까지, 유학생 비자 관리 플랫폼",
     description:
-      "엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요",
+      "FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더, AI 다국어 상담까지. 대학 국제처의 유학생 비자 업무를 하나의 대시보드로 통합합니다. 8주 무료 파일럿 운영 중.",
   },
   other: {
     "theme-color": "#1E3A5F",

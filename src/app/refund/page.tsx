@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/components/legal-layout";
 
 export const metadata: Metadata = {
-  title: "환불규정 - VisaCampus",
+  title: "환불규정 - VisaCampus | 유학생 비자 관리 SaaS 환불 안내",
   description:
-    "VisaCampus 환불규정. 전자상거래 등에서의 소비자 보호에 관한 법률을 준수하며, SaaS 구독 서비스의 환불 기준을 안내합니다.",
+    "VisaCampus 환불규정 안내. 7일 이내 전액 환불, 연간 구독 30일 이내 일할 환불 등 전자상거래법을 준수하는 SaaS 구독 서비스 환불 기준과 결제 수단별 처리 방식을 확인하세요.",
 };
 
 export default function RefundPage() {
@@ -68,7 +68,7 @@ export default function RefundPage() {
             제2조 (주요 환불 사유별 처리 기준)
           </h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="환불 사유별 처리 기준">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold w-8">
@@ -160,10 +160,18 @@ export default function RefundPage() {
           <h2 className="text-lg font-bold text-gray-900 mb-3">
             제4조 (환불 처리 기한)
           </h2>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>환불 요청 접수 후 영업일 기준 5일 이내에 처리됩니다.</li>
+          <ol className="list-decimal pl-5 space-y-2">
             <li>
-              5영업일 이후에도 환불이 완료되지 않은 경우{" "}
+              환불 요청 접수 후 <strong>영업일 기준 3일 이내</strong>에
+              처리됩니다(「전자상거래 등에서의 소비자 보호에 관한 법률」
+              제18조에 따름).
+            </li>
+            <li>
+              회사가 정당한 사유 없이 환불을 지연하는 경우, 지연 기간에 대해
+              연 15%의 지연배상금을 가산하여 환불합니다(동법 제18조 제2항).
+            </li>
+            <li>
+              3영업일 이후에도 환불이 완료되지 않은 경우{" "}
               <a
                 href="mailto:contact@visacampus.org"
                 className="text-indigo-600 hover:text-indigo-700 font-medium"
@@ -172,7 +180,7 @@ export default function RefundPage() {
               </a>
               로 문의해주세요.
             </li>
-          </ul>
+          </ol>
         </section>
 
         {/* 제5조 */}
@@ -181,7 +189,7 @@ export default function RefundPage() {
             제5조 (결제 수단별 환불 방식)
           </h2>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="결제 수단별 환불 방식">
               <thead>
                 <tr className="bg-gray-50">
                   <th className="border border-gray-200 px-3 py-2 text-left font-semibold">

@@ -57,11 +57,18 @@ export default function AboutPage() {
               않아야 하며, IEQAS 불법체류율이 2%를 넘지 않도록 실시간으로
               모니터링해야 합니다.
             </p>
-            <p>
+            <p className="mb-3">
               하지만 대부분의 대학은 여전히 엑셀, FIMS 시스템, 학사 시스템 세
               곳을 따로따로 확인하며 업무를 처리하고 있습니다. 2024년 기준 44개
               대학이 IEQAS 기준 미달로 비자 발급 제한을 받았습니다. VisaCampus는
               이런 문제를 해결하기 위해 만들어졌습니다.
+            </p>
+            <p>
+              VisaCampus의 목표는 단순합니다. 국제처 담당자가 데이터 입력과
+              수작업에 소비하는 시간을 줄이고, 학생 상담과 지원이라는 본연의
+              업무에 더 많은 시간을 쓸 수 있도록 돕는 것입니다. 단체접수 시즌에
+              50~80건의 비자 연장을 수기로 관리하던 업무를 자동화하고,
+              변동신고 15일 기한을 놓치지 않도록 알림을 제공합니다.
             </p>
           </section>
 
@@ -131,7 +138,7 @@ export default function AboutPage() {
               기반 접근 제어와 감사 로그를 통해 모든 데이터 접근을 기록합니다.
               자세한 내용은{" "}
               <Link
-                href="/privacy"
+                href="/policy/privacy"
                 className="text-indigo-600 font-semibold hover:text-indigo-700"
               >
                 개인정보 처리방침
@@ -164,7 +171,7 @@ export default function AboutPage() {
             </div>
             <span className="text-sm font-semibold text-white">VisaCampus</span>
           </div>
-          <nav className="flex items-center gap-6 text-sm text-gray-400">
+          <nav className="flex items-center gap-6 text-sm text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">
               홈
             </Link>
@@ -176,7 +183,7 @@ export default function AboutPage() {
               회사 소개
             </Link>
             <Link
-              href="/privacy"
+              href="/policy/privacy"
               className="hover:text-white transition-colors"
             >
               개인정보 처리방침

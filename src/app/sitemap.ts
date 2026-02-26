@@ -15,7 +15,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: "https://www.visacampus.org/privacy",
+      url: "https://www.visacampus.org/policy/privacy",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
+      url: "https://www.visacampus.org/tos",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
+      url: "https://www.visacampus.org/refund",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,

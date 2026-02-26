@@ -1086,7 +1086,7 @@ const FAQ = () => {
                   {item.question}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 ${
+                  className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-200 ${
                     openIndex === i ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -1288,7 +1288,7 @@ const Footer = () => (
           <span className="text-lg font-bold text-white tracking-tight mb-3 inline-block" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             VisaCampus
           </span>
-          <p className="text-gray-300 text-sm leading-relaxed">
+          <p className="text-gray-200 text-sm leading-relaxed">
             대학 국제처를 위한 유학생 비자 관리 플랫폼. FIMS 보고 간소화부터 IEQAS
             이탈률 모니터링까지.
           </p>
@@ -1297,7 +1297,7 @@ const Footer = () => (
         {/* Links */}
         <div>
           <h3 className="text-white font-semibold text-sm mb-3">안내</h3>
-          <ul className="space-y-2 text-sm text-gray-300">
+          <ul className="space-y-2 text-sm text-gray-200">
             <li>
               <a href="/about" className="hover:text-white transition-colors">
                 회사 소개
@@ -1324,7 +1324,7 @@ const Footer = () => (
         {/* Contact */}
         <div>
           <h3 className="text-white font-semibold text-sm mb-3">문의하기</h3>
-          <ul className="space-y-2 text-sm text-gray-300">
+          <ul className="space-y-2 text-sm text-gray-200">
             <li>
               <a
                 href="mailto:contact@visacampus.org"
