@@ -4,7 +4,7 @@ import LegalLayout from "@/components/legal-layout";
 export const metadata: Metadata = {
   title: "환불규정 - VisaCampus | 유학생 비자 관리 SaaS 환불 안내",
   description:
-    "VisaCampus 환불규정 안내. 7일 이내 전액 환불, 연간 구독 30일 이내 일할 환불 등 전자상거래법을 준수하는 SaaS 구독 서비스 환불 기준과 결제 수단별 처리 방식을 확인하세요.",
+    "VisaCampus 환불규정 안내. 7일 이내 전액 환불, 연간 구독 30일 이내 일할 환불 등 전자상거래법을 준수하는 SaaS 구독 서비스 환불 기준과 결제 수단별 처리 방식을 확인하세요. 문의: contact@visacampus.org",
 };
 
 export default function RefundPage() {

@@ -4,7 +4,7 @@ import LegalLayout from "@/components/legal-layout";
 export const metadata: Metadata = {
   title: "이용약관 - VisaCampus | 유학생 비자 관리 SaaS 이용 조건",
   description:
-    "VisaCampus 서비스 이용약관. 대학 국제처를 위한 유학생 비자 관리 SaaS 대시보드의 이용 조건, 데이터 소유권, 결제·환불, 해지 절차 등 서비스 이용에 필요한 모든 사항을 안내합니다.",
+    "VisaCampus 서비스 이용약관. 대학 국제처를 위한 유학생 비자 관리 SaaS 대시보드의 이용 조건, 데이터 소유권, 결제·환불, 해지 절차 등 서비스 이용에 필요한 모든 사항을 안내합니다. 문의: contact@visacampus.org",
 };
 
 export default function TosPage() {

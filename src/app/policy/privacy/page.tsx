@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "개인정보 처리방침 - VisaCampus | 유학생 개인정보 보호 정책",
   description:
-    "VisaCampus 개인정보 처리방침. AES-256-GCM 암호화, 3단계 역할 기반 접근 제어, 감사 로그 기록으로 유학생 개인정보를 안전하게 보호합니다. AWS 서울 리전 국내 데이터 보관.",
+    "VisaCampus 개인정보 처리방침. AES-256-GCM 암호화, 3단계 역할 기반 접근 제어, 감사 로그 기록으로 유학생 개인정보를 안전하게 보호합니다. AWS 서울 리전 국내 데이터 보관. 문의: contact@visacampus.org",
 };
 
 export default function PrivacyPolicyPage() {
