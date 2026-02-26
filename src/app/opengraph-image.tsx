@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "VisaCampus - 엑셀과 수작업으로 관리하던 유학생 비자 업무, 이제 한 곳에서 해결하세요";
+export const alt = "VisaCampus - FIMS 보고부터 비자 만료 관리까지, 유학생 비자 관리 플랫폼";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,11 +46,11 @@ export default async function OGImage() {
         <div
           style={{
             fontFamily: "Montserrat",
-            fontSize: 64,
+            fontSize: 72,
             fontWeight: 700,
             color: "#ffffff",
-            letterSpacing: "-1px",
-            marginBottom: 24,
+            letterSpacing: "-2px",
+            marginBottom: 32,
           }}
         >
           VisaCampus
@@ -59,25 +59,41 @@ export default async function OGImage() {
         {/* Tagline */}
         <div
           style={{
-            fontSize: 28,
-            color: "#BAE6FD",
+            fontSize: 32,
+            fontWeight: 600,
+            color: "#ffffff",
             textAlign: "center",
-            lineHeight: 1.5,
+            lineHeight: 1.4,
           }}
         >
-          유학생 비자 관리, 엑셀에서 벗어나세요
+          대학 국제처를 위한 유학생 비자 관리 플랫폼
         </div>
 
-        {/* Sub-tagline */}
+        {/* Feature pills */}
         <div
           style={{
-            fontSize: 18,
-            color: "#7DD3FC",
-            marginTop: 16,
-            textAlign: "center",
+            display: "flex",
+            gap: 16,
+            marginTop: 40,
           }}
         >
-          FIMS 보고 · 비자 만료 관리 · IEQAS 모니터링 · AI 상담
+          {["FIMS 보고", "비자 만료 관리", "IEQAS 모니터링", "AI 상담"].map(
+            (label) => (
+              <div
+                key={label}
+                style={{
+                  fontSize: 16,
+                  color: "#BAE6FD",
+                  padding: "8px 20px",
+                  borderRadius: 100,
+                  border: "1px solid rgba(186,230,253,0.3)",
+                  background: "rgba(186,230,253,0.08)",
+                }}
+              >
+                {label}
+              </div>
+            )
+          )}
         </div>
 
         {/* URL */}
@@ -85,8 +101,9 @@ export default async function OGImage() {
           style={{
             position: "absolute",
             bottom: 40,
-            fontSize: 16,
-            color: "#7DD3FC",
+            fontSize: 15,
+            color: "rgba(186,230,253,0.6)",
+            letterSpacing: "1px",
           }}
         >
           www.visacampus.org
