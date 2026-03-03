@@ -231,6 +231,11 @@ const FAQ_ITEMS: FAQItem[] = [
       "네, 기존에 사용하시던 엑셀/CSV 파일을 업로드하면 AI가 자동으로 컬럼을 매핑합니다. 수백 건의 학생 데이터를 한 번에 가져올 수 있어, 데이터 이관에 별도 시간이 거의 들지 않습니다.",
   },
   {
+    question: "기존 학사시스템과 연동할 수 있나요?",
+    answer:
+      "파일럿 시작 시에는 엑셀/CSV 업로드 방식으로 데이터를 가져옵니다. 이후 대학 학사시스템과의 API 연동이 승인되면, 학생 데이터가 자동으로 동기화되어 수동 업로드 없이 사용할 수 있습니다.",
+  },
+  {
     question: "FIMS와 직접 연동되나요?",
     answer:
       "FIMS(외국인유학생정보시스템)는 공개 API를 제공하지 않아 직접 연동은 불가합니다. 대신 FIMS 호환 엑셀 파일을 자동 생성하여, 정기보고 시 그대로 업로드할 수 있도록 지원합니다.",
@@ -244,6 +249,16 @@ const FAQ_ITEMS: FAQItem[] = [
     question: "어떤 규모의 대학에서 사용할 수 있나요?",
     answer:
       "유학생 수 100명 이상의 대학에 적합합니다. 1,000명 이상의 대규모 대학도 지원하며, 대량 데이터 로딩과 가상 스크롤 기능으로 성능 저하 없이 사용할 수 있습니다.",
+  },
+  {
+    question: "지금 바로 사용할 수 있는 기능은 무엇인가요?",
+    answer:
+      "현재 사용 가능한 기능은 통합 학생 관리 대시보드, 신호등 위험도 시스템, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더, 엑셀/CSV 대량 업로드 + AI 컬럼 매핑입니다. FIMS 호환 엑셀 자동 생성과 AI 다국어 상담은 순차적으로 출시 예정입니다.",
+  },
+  {
+    question: "비용은 어떻게 되나요?",
+    answer:
+      "학생 수 기반 과금이며, 자세한 요금은 도입 문의 시 안내드립니다. 8주 파일럿 기간에는 무료로 사용하실 수 있고, 파일럿 중 맞춤 기능 요청도 가능합니다. 파일럿 종료 후 유료 전환 여부를 결정하시면 됩니다.",
   },
   {
     question: "파일럿이 끝나면 데이터는 어떻게 되나요?",
@@ -541,12 +556,12 @@ const Hero = () => (
         className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-5 tracking-tight text-balance"
         style={{ lineHeight: 1.3 }}
       >
-        유학생 비자 관리,
+        엑셀 3개 열던 업무,
         <br />
-        <span className="text-indigo-600">엑셀에서 벗어나세요</span>
+        <span className="text-indigo-600">대시보드 하나로</span>
       </h1>
       <p className="text-base sm:text-lg text-gray-500 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-        FIMS 보고부터 비자 만료 관리까지, 한 곳에서
+        유학생 현황 파악 · IEQAS 이탈률 관리 · FIMS 보고 — 한 화면에서
       </p>
 
       <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-10">
