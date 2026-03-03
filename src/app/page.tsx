@@ -346,7 +346,7 @@ const CTAButton = ({
         : "bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200/50 active:bg-indigo-800 shadow-lg shadow-indigo-200 focus-visible:outline-indigo-600"
     } ${className}`}
   >
-    {children || "15분 데모 신청하기"}
+    {children || "데모 신청하기"}
   </a>
 );
 
@@ -525,8 +525,6 @@ const Nav = () => {
             VisaCampus
           </span>
           <div className="hidden sm:flex items-center gap-6 text-sm text-gray-600">
-            <a href="#solution" className="hover:text-gray-900 transition-colors">기능</a>
-            <a href="/about" className="hover:text-gray-900 transition-colors">회사 소개</a>
           </div>
           {/* Touch target: min-h-[44px] for mobile accessibility */}
           <a
@@ -556,12 +554,12 @@ const Hero = () => (
         className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-5 tracking-tight text-balance"
         style={{ lineHeight: 1.3 }}
       >
-        엑셀 3개 열던 업무,
+        엑셀 3개 열던 유학생 업무,
         <br />
         <span className="text-indigo-600">대시보드 하나로</span>
       </h1>
       <p className="text-base sm:text-lg text-gray-500 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-        유학생 현황 파악 · IEQAS 이탈률 관리 · FIMS 보고 — 한 화면에서
+        유학생 현황 파악 · IEQAS 이탈률 관리 · FIMS 보고, 단 하나의 화면에서 관리하세요
       </p>
 
       <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-6 mb-8 sm:mb-10">
@@ -663,7 +661,7 @@ const Solution = () => {
               : "opacity-0 translate-y-4"
           }`}
         >
-          엑셀 3개 열던 업무, 대시보드 하나로
+          엑셀 3개 열던 유학생 업무, 대시보드 하나로
         </h2>
         <p
           className={`text-center text-indigo-200 text-sm sm:text-base mb-10 sm:mb-14 transition duration-700 delay-100 ${
@@ -719,7 +717,6 @@ const Solution = () => {
                 <span className="text-sm font-semibold text-indigo-300">
                   기능 02
                 </span>
-                <ComingSoonBadge dark />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">
                 FIMS 보고 간소화
@@ -1226,7 +1223,7 @@ const Footer = () => (
       </div>
 
       <div className="text-center text-gray-500 text-xs space-y-1 mb-4">
-        <p>불편함 | 대표 이승은 | 사업자등록번호 문의: contact@visacampus.org</p>
+        <p>불편함 | 대표 이승은 | 사업자등록번호 176-28-01765</p>
       </div>
       <p className="text-center text-gray-500 text-xs">
         &copy; {new Date().getFullYear()} VisaCampus. All rights reserved.
