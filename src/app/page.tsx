@@ -172,7 +172,7 @@ const PROBLEM_CARDS: ProblemCard[] = [
     icon: "alert",
     iconColor: "red",
     title: "지난 2년간 44개 대학이 비자 발급 제한을 받았습니다",
-    desc: "IEQAS 불법체류율 2% 초과 시 인증 위험. 실시간 모니터링 수단이 없습니다.",
+    desc: "IEQAS 불법체류율 2% 초과 시 인증 위험. 실시간 모니터링 수단이 없습니다. (2023-2024 IEQAS 평가 결과 기준)",
     urgent: true,
   },
 ];
@@ -193,12 +193,6 @@ const FIMS_FEATURES_COMING: FeatureItem[] = [
   { text: "변동신고: 상태 변경 자동 감지 + 15일 카운트다운", ready: false },
 ];
 
-const CHATBOT_FEATURES: FeatureItem[] = [
-  { text: "한국어·영어·중국어·베트남어·우즈베크어·몽골어", ready: false },
-  { text: "비자 연장, 서류 안내, 기한 알림 자동 응답", ready: false },
-  { text: "복잡한 질문 → 담당자 자동 전달", ready: false },
-];
-
 const BEFORE_AFTER_READY: BeforeAfterCard[] = [
   {
     title: "학생 현황 파악",
@@ -212,18 +206,6 @@ const BEFORE_AFTER_READY: BeforeAfterCard[] = [
   },
 ];
 
-const BEFORE_AFTER_COMING: BeforeAfterCard[] = [
-  {
-    title: "FIMS 정기보고",
-    before: "엑셀 → FIMS 수동 입력, 분기마다 며칠 소요",
-    after: "대시보드에서 FIMS 호환 파일 바로 생성",
-  },
-  {
-    title: "유학생 상담",
-    before: "반복 질문에 수동 응대, 6개 언어 장벽",
-    after: "AI 챗봇이 다국어 기본 상담 자동 처리",
-  },
-];
 
 const PRIVACY_ITEMS: TrustItem[] = [
   { text: "AWS 서울 리전 (국내 데이터 보관)" },
@@ -239,9 +221,9 @@ const RBAC_ITEMS: TrustItem[] = [
 
 const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "무료 파일럿은 어떻게 진행되나요?",
+    question: "데모 신청 후 어떻게 진행되나요?",
     answer:
-      "신청서를 제출하시면 2영업일 이내에 연락드립니다. 별도 설치 없이 웹 브라우저에서 바로 시작할 수 있으며, 8주간 모든 기능을 무료로 사용하실 수 있습니다. 파일럿 기간 중 전담 지원을 제공합니다.",
+      "신청서를 제출하시면 2영업일 이내에 연락드립니다. 15분 화면 시연 후, 원하시면 8주 무료 파일럿을 시작할 수 있습니다. 별도 설치 없이 웹 브라우저에서 바로 시작되며, 파일럿 기간 중 전담 지원을 제공합니다.",
   },
   {
     question: "기존 엑셀 데이터를 가져올 수 있나요?",
@@ -274,7 +256,7 @@ const FAQ_ITEMS: FAQItem[] = [
  * Hooks
  * ──────────────────────────────────────────── */
 
-const useInView = (threshold = 0.15) => {
+const useInView = (threshold = 0.05) => {
   const ref = useRef<HTMLElement>(null);
   const [isInView, setIsInView] = useState(false);
 
@@ -349,7 +331,7 @@ const CTAButton = ({
         : "bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200/50 active:bg-indigo-800 shadow-lg shadow-indigo-200 focus-visible:outline-indigo-600"
     } ${className}`}
   >
-    {children || "8주 무료 파일럿 신청"}
+    {children || "15분 데모 신청하기"}
   </a>
 );
 
@@ -500,78 +482,6 @@ const ImportMockup = () => (
   </div>
 );
 
-const ChatbotMockup = () => (
-  <div className="flex-1 w-full bg-white rounded-xl p-3 sm:p-4 border border-slate-200 shadow-sm overflow-hidden">
-    <div className="flex items-center justify-between mb-3 pb-2.5 border-b border-slate-100">
-      <div className="flex items-center gap-2">
-        <div className="w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center">
-          <Icon name="sparkles" className="w-3.5 h-3.5 text-indigo-600" />
-        </div>
-        <div>
-          <div className="text-[10px] font-semibold text-slate-700">
-            VisaCampus AI
-          </div>
-          <div className="text-[8px] text-emerald-500">온라인</div>
-        </div>
-      </div>
-      <div className="flex gap-1">
-        {["KO", "EN", "ZH", "VI"].map((lang) => (
-          <span
-            key={lang}
-            className={`text-[7px] px-1.5 py-0.5 rounded font-bold ${
-              lang === "VI"
-                ? "bg-indigo-100 text-indigo-700 ring-1 ring-indigo-300"
-                : "bg-slate-100 text-slate-500"
-            }`}
-          >
-            {lang}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div className="space-y-2.5">
-      <div className="flex justify-end">
-        <div className="bg-indigo-600 text-white rounded-2xl rounded-br-md px-3 py-2 max-w-[75%]">
-          <p className="text-[10px] leading-relaxed">
-            Xin chào, tôi muốn gia hạn visa D-2
-          </p>
-        </div>
-      </div>
-
-      <div className="flex justify-start">
-        <div className="bg-slate-100 text-slate-700 rounded-2xl rounded-bl-md px-3 py-2 max-w-[85%]">
-          <p className="text-[10px] leading-relaxed">
-            Chào bạn! Để gia hạn visa D-2, bạn cần chuẩn bị:
-          </p>
-          <div className="mt-1.5 space-y-1">
-            {["Hộ chiếu (원본)", "Đơn xin gia hạn", "Chứng nhận tại học"].map(
-              (item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-1 text-[9px] text-slate-600"
-                >
-                  <Icon name="checkCircle" className="w-3 h-3 text-emerald-500" />
-                  <span>{item}</span>
-                </div>
-              )
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-start">
-        <div className="bg-amber-50 border border-amber-200 text-amber-700 rounded-xl px-3 py-1.5 flex items-center gap-1.5">
-          <Icon name="alert" className="w-3 h-3 text-amber-500" />
-          <p className="text-[9px] font-medium">
-            복잡한 질문 → 김현정 담당자에게 전달됨
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 /* ────────────────────────────────────────────
  * Section Components
  * ──────────────────────────────────────────── */
@@ -599,12 +509,16 @@ const Nav = () => {
           <span className="text-lg sm:text-xl font-bold text-indigo-700 tracking-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             VisaCampus
           </span>
+          <div className="hidden sm:flex items-center gap-6 text-sm text-gray-600">
+            <a href="#solution" className="hover:text-gray-900 transition-colors">기능</a>
+            <a href="/about" className="hover:text-gray-900 transition-colors">회사 소개</a>
+          </div>
           {/* Touch target: min-h-[44px] for mobile accessibility */}
           <a
             href="#cta"
             className="inline-flex items-center min-h-[44px] bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium cursor-pointer hover:bg-indigo-700 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            무료 파일럿 신청
+            데모 신청하기
           </a>
         </div>
       </nav>
@@ -651,7 +565,7 @@ const Hero = () => (
 
       <CTAButton className="px-8 py-3.5 min-h-[48px] rounded-xl text-base w-full sm:w-auto" />
       <p className="text-xs text-gray-500 mt-3">
-        설치 없이 바로 시작 · 8주간 무료
+        15분 화면 시연 · 설치 없이 바로 확인
       </p>
     </div>
   </section>
@@ -670,7 +584,7 @@ const Problem = () => {
           className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-8 sm:mb-12 transition duration-700 ${
             isInView
               ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
+              : "opacity-0 translate-y-2"
           }`}
         >
           이런 고민, 매 학기 반복되고 계시죠?
@@ -687,7 +601,7 @@ const Problem = () => {
               } ${
                 isInView
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
+                  : "opacity-0 translate-y-3"
               }`}
               style={{
                 transitionDelay: isInView ? `${i * 100}ms` : "0ms",
@@ -719,6 +633,7 @@ const Solution = () => {
 
   return (
     <section
+      id="solution"
       ref={ref as React.RefObject<HTMLElement>}
       className="py-14 sm:py-20 px-4 sm:px-6 relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 overflow-hidden"
     >
@@ -733,7 +648,7 @@ const Solution = () => {
               : "opacity-0 translate-y-4"
           }`}
         >
-          VisaCampus가 도와드립니다
+          엑셀 3개 열던 업무, 대시보드 하나로
         </h2>
         <p
           className={`text-center text-indigo-200 text-sm sm:text-base mb-10 sm:mb-14 transition duration-700 delay-100 ${
@@ -742,7 +657,7 @@ const Solution = () => {
               : "opacity-0 translate-y-4"
           }`}
         >
-          국제처 업무에 맞춰 설계된 유학생 관리 플랫폼
+          국제처 실무자와 함께 설계한 유학생 관리 플랫폼
         </p>
 
         <div className="space-y-16 sm:space-y-24">
@@ -772,6 +687,11 @@ const Solution = () => {
                     <span>{f.text}</span>
                   </div>
                 ))}
+              </div>
+              <div className="mt-6">
+                <CTAButton variant="light" className="px-6 py-2.5 rounded-lg text-sm">
+                  이 기능부터 데모로 확인하기
+                </CTAButton>
               </div>
             </div>
             <DashboardMockup />
@@ -822,36 +742,6 @@ const Solution = () => {
             <ImportMockup />
           </div>
 
-          {/* Feature 3 — AI Chatbot */}
-          <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-10">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-sm font-semibold text-indigo-300">
-                  기능 03
-                </span>
-                <ComingSoonBadge dark />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">
-                AI 다국어 상담봇
-              </h3>
-              <p className="text-indigo-100 mb-4 leading-relaxed">
-                6개 언어로 비자 절차, 필요 서류, 기한을 자동 안내합니다. 복잡한
-                질문은 담당자에게 자동으로 전달됩니다.
-              </p>
-              <div className="space-y-2">
-                {CHATBOT_FEATURES.map((f, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 text-sm text-indigo-300"
-                  >
-                    <span className="w-5 h-5 flex-shrink-0" />
-                    <span>{f.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <ChatbotMockup />
-          </div>
         </div>
       </div>
     </section>
@@ -894,7 +784,7 @@ const BeforeAfter = () => {
       <div className="max-w-4xl mx-auto">
         <h2
           className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-8 sm:mb-12 transition duration-700 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           }`}
         >
           이렇게 달라집니다
@@ -905,7 +795,7 @@ const BeforeAfter = () => {
             <div
               key={i}
               className={`bg-white rounded-xl overflow-hidden border border-gray-100 cursor-pointer hover:shadow-lg transition duration-500 relative ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
               }`}
               style={{ transitionDelay: isInView ? `${i * 120}ms` : "0ms" }}
             >
@@ -925,32 +815,6 @@ const BeforeAfter = () => {
             </div>
           ))}
 
-          {BEFORE_AFTER_COMING.map((card, i) => (
-            <div
-              key={i}
-              className={`bg-white rounded-xl overflow-hidden border border-gray-100 relative transition duration-500 ${
-                isInView ? "opacity-80 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-              style={{ transitionDelay: isInView ? `${(i + BEFORE_AFTER_READY.length) * 120}ms` : "0ms" }}
-            >
-              <div className="flex flex-col sm:flex-row relative">
-                <div className="flex-1 p-5 sm:p-6 bg-red-50/30 border-b sm:border-b-0 sm:border-r border-gray-100">
-                  <div className="text-xs font-bold text-red-300 uppercase tracking-wide mb-2">Before</div>
-                  <h3 className="font-semibold text-gray-700 text-sm mb-1">{card.title}</h3>
-                  <p className="text-sm text-gray-500">{card.before}</p>
-                </div>
-                <ArrowDivider />
-                <div className="flex-1 p-5 sm:p-6 bg-emerald-50/30">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-bold text-emerald-400 uppercase tracking-wide">After</span>
-                    <ComingSoonBadge />
-                  </div>
-                  <h3 className="font-semibold text-gray-700 text-sm mb-1">{card.title}</h3>
-                  <p className="text-sm text-gray-500 font-medium">{card.after}</p>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -968,14 +832,14 @@ const Trust = () => {
       <div className="max-w-4xl mx-auto">
         <h2
           className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-2 sm:mb-3 transition duration-700 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           }`}
         >
           개인정보, 안심하세요
         </h2>
         <p
           className={`text-center text-gray-500 text-sm sm:text-base mb-8 sm:mb-12 transition duration-700 delay-100 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           }`}
         >
           유학생 개인정보를 안전하게 관리합니다
@@ -984,7 +848,7 @@ const Trust = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
           <div
             className={`bg-indigo-50 rounded-xl p-6 border border-indigo-100 cursor-pointer hover:-translate-y-1 hover:shadow-lg transition duration-300 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
             style={{ transitionDelay: isInView ? "100ms" : "0ms" }}
           >
@@ -1001,7 +865,7 @@ const Trust = () => {
           </div>
           <div
             className={`bg-indigo-50 rounded-xl p-6 border border-indigo-100 cursor-pointer hover:-translate-y-1 hover:shadow-lg transition duration-300 ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
             style={{ transitionDelay: isInView ? "200ms" : "0ms" }}
           >
@@ -1048,17 +912,17 @@ const FAQ = () => {
       <div className="max-w-3xl mx-auto">
         <h2
           className={`font-display text-xl sm:text-3xl font-bold text-center text-balance text-gray-900 mb-2 sm:mb-3 transition duration-700 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           }`}
         >
           자주 묻는 질문
         </h2>
         <p
           className={`text-center text-gray-500 text-sm sm:text-base mb-8 sm:mb-12 transition duration-700 delay-100 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           }`}
         >
-          파일럿 신청 전 궁금한 점을 확인하세요
+          데모 신청 전 궁금한 점을 확인하세요
         </p>
 
         <div className="space-y-3">
@@ -1068,7 +932,7 @@ const FAQ = () => {
               className={`bg-white rounded-xl border border-gray-100 overflow-hidden transition duration-500 ${
                 isInView
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
+                  : "opacity-0 translate-y-2"
               }`}
               style={{
                 transitionDelay: isInView ? `${i * 80}ms` : "0ms",
@@ -1143,7 +1007,7 @@ const CTAForm = () => {
         email: formData.email,
         org: formData.org,
         role: formData.role,
-        source: "landing",
+        source: "demo_request",
       });
 
       if (dbError) {
@@ -1177,12 +1041,21 @@ const CTAForm = () => {
 
       <div className="relative max-w-xl mx-auto text-center">
         <h2 className="font-display text-xl sm:text-3xl font-bold text-white mb-2 sm:mb-3 text-balance">
-          8주 무료 파일럿을 시작하세요
+          15분 데모를 신청하세요
         </h2>
         <p className="text-indigo-200 text-sm sm:text-base mb-8 sm:mb-10">
-          신청 후 2영업일 이내에 연락드립니다. 설치 없이 바로 시작할 수
-          있습니다.
+          신청 후 2영업일 이내에 데모 일정을 잡아드립니다.
         </p>
+
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-8 text-sm text-indigo-200">
+          <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">1</span> 데모 신청</span>
+          <span className="text-indigo-400">→</span>
+          <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">2</span> 일정 확인</span>
+          <span className="text-indigo-400">→</span>
+          <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">3</span> 15분 시연</span>
+          <span className="text-indigo-400">→</span>
+          <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">4</span> 파일럿 논의</span>
+        </div>
 
         {submitted ? (
           <div
@@ -1197,13 +1070,13 @@ const CTAForm = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-2">
               감사합니다!
             </h3>
-            <p className="text-gray-600">2영업일 이내에 연락드리겠습니다.</p>
+            <p className="text-gray-600">2영업일 이내에 데모 일정을 안내드리겠습니다.</p>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
             className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl shadow-indigo-900/20"
-            aria-label="파일럿 신청 양식"
+            aria-label="데모 신청 양식"
           >
             <div className="space-y-4 mb-6">
               <div>
@@ -1266,11 +1139,11 @@ const CTAForm = () => {
               disabled={isLoading}
               className="w-full min-h-[48px] bg-indigo-600 text-white py-3.5 rounded-xl font-semibold text-sm sm:text-base cursor-pointer hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 active:bg-indigo-800 active:translate-y-0 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {isLoading ? "신청 중..." : "8주 무료 파일럿 신청하기"}
+              {isLoading ? "신청 중..." : "데모 신청하기"}
             </button>
             <p className="text-xs text-gray-500 mt-4 flex items-center justify-center gap-1">
               <Icon name="lock" className="w-3.5 h-3.5" />
-              <span>입력하신 정보는 파일럿 안내 목적으로만 사용됩니다.</span>
+              <span>입력하신 정보는 데모 안내 목적으로만 사용됩니다.</span>
             </p>
           </form>
         )}
@@ -1337,6 +1210,9 @@ const Footer = () => (
         </div>
       </div>
 
+      <div className="text-center text-gray-500 text-xs space-y-1 mb-4">
+        <p>불편함 | 대표 이승은 | 사업자등록번호 문의: contact@visacampus.org</p>
+      </div>
       <p className="text-center text-gray-500 text-xs">
         &copy; {new Date().getFullYear()} VisaCampus. All rights reserved.
       </p>
@@ -1405,7 +1281,7 @@ export default function VisaCampusLanding() {
               "@type": "Offer",
               price: "0",
               priceCurrency: "KRW",
-              description: "8주 무료 파일럿",
+              description: "15분 데모 신청",
             },
             provider: {
               "@type": "Organization",
@@ -1418,7 +1294,6 @@ export default function VisaCampusLanding() {
               "IEQAS 이탈률 실시간 모니터링",
               "비자 만료 캘린더",
               "엑셀 대량 업로드 + AI 컬럼 매핑",
-              "AI 다국어 상담봇",
             ],
             inLanguage: "ko",
           }),

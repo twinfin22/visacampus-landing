@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "회사 소개 - VisaCampus | 대학 국제처를 위한 유학생 관리 플랫폼",
   description:
-    "VisaCampus는 대학 국제처를 위한 유학생 비자 관리 플랫폼입니다. FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 관리, AI 다국어 상담까지 한 곳에서 제공합니다. 8주 무료 파일럿 운영 중.",
+    "VisaCampus는 대학 국제처를 위한 유학생 비자 관리 플랫폼입니다. FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 관리까지 한 곳에서 제공합니다. 15분 데모 신청 가능.",
 };
 
 export default function AboutPage() {
@@ -117,16 +117,6 @@ export default function AboutPage() {
                   수백 건의 학생 데이터를 한 번에 가져올 수 있습니다.
                 </p>
               </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">
-                  AI 다국어 상담봇 (출시 예정)
-                </h3>
-                <p>
-                  한국어, 영어, 중국어, 베트남어, 우즈베크어, 몽골어 6개 언어로
-                  비자 절차, 필요 서류, 기한을 자동 안내합니다. 복잡한 질문은
-                  담당자에게 자동으로 전달됩니다.
-                </p>
-              </div>
             </div>
           </section>
 
@@ -152,7 +142,7 @@ export default function AboutPage() {
           <section className="bg-gray-50 rounded-xl p-6 border border-gray-100">
             <h2 className="text-lg font-bold text-gray-900 mb-3">문의</h2>
             <p>
-              8주 무료 파일럿 신청 및 서비스 관련 문의는{" "}
+              데모 신청 및 서비스 관련 문의는{" "}
               <a
                 href="mailto:contact@visacampus.org"
                 className="text-indigo-600 font-semibold hover:text-indigo-700"
@@ -191,6 +181,9 @@ export default function AboutPage() {
               개인정보 처리방침
             </Link>
           </nav>
+          <div className="text-center text-gray-500 text-xs space-y-1 mt-6">
+            <p>불편함 | 대표 이승은 | 사업자등록번호 문의: contact@visacampus.org</p>
+          </div>
         </div>
       </footer>
     </div>
