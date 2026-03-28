@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.visacampus.org"),
   title: "VisaCampus | FIMS 보고부터 비자 만료 관리까지, 유학생 비자 관리 플랫폼",
   description:
-    "FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더까지. 대학 국제처의 유학생 비자 업무를 하나의 대시보드로 통합합니다. 15분 데모를 신청하세요.",
+    "FIMS 정기보고 자동화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더, 변동신고 알림까지. 대학 국제처의 유학생 비자 행정 업무 전반을 하나의 대시보드로 통합 관리합니다. 지금 15분 무료 데모를 신청하세요.",
   alternates: {
     canonical: "/",
   },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title:
       "VisaCampus | FIMS 보고부터 비자 만료 관리까지, 유학생 비자 관리 플랫폼",
     description:
-      "FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더까지. 대학 국제처의 유학생 비자 업무를 하나의 대시보드로 통합합니다. 15분 데모를 신청하세요.",
+      "FIMS 정기보고 자동화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더, 변동신고 알림까지. 대학 국제처의 유학생 비자 행정 업무 전반을 하나의 대시보드로 통합 관리합니다. 지금 15분 무료 데모를 신청하세요.",
     url: "https://www.visacampus.org",
     siteName: "VisaCampus",
     locale: "ko_KR",
@@ -27,11 +27,13 @@ export const metadata: Metadata = {
     title:
       "VisaCampus | FIMS 보고부터 비자 만료 관리까지, 유학생 비자 관리 플랫폼",
     description:
-      "FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더까지. 대학 국제처의 유학생 비자 업무를 하나의 대시보드로 통합합니다. 15분 데모를 신청하세요.",
+      "FIMS 정기보고 자동화, IEQAS 이탈률 실시간 모니터링, 비자 만료 캘린더, 변동신고 알림까지. 대학 국제처의 유학생 비자 행정 업무 전반을 하나의 대시보드로 통합 관리합니다. 지금 15분 무료 데모를 신청하세요.",
   },
   other: {
     "theme-color": "#1E3A5F",
     "color-scheme": "light",
+    "article:published_time": "2025-09-01",
+    "article:modified_time": "2026-03-28",
   },
 };
 

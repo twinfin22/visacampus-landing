@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "회사 소개 - VisaCampus | 대학 국제처를 위한 유학생 관리 플랫폼",
   description:
-    "VisaCampus는 대학 국제처를 위한 유학생 비자 관리 플랫폼입니다. FIMS 정기보고 간소화, IEQAS 이탈률 실시간 모니터링, 비자 만료 관리까지 한 곳에서 제공합니다. 15분 데모 신청 가능.",
+    "VisaCampus는 한국 대학 국제처를 위한 유학생 비자 관리 플랫폼입니다. FIMS 정기보고 자동화, IEQAS 불법체류율 실시간 모니터링, 비자 만료 알림, 변동신고 기한 추적까지 한 대시보드에서 제공합니다. 지금 15분 데모를 신청하세요.",
 };
 
 export default function AboutPage() {
@@ -70,7 +70,11 @@ export default function AboutPage() {
               50~80건의 비자 연장을 수기로 관리하던 업무를 자동화하고,
               변동신고 15일 기한을 놓치지 않도록 알림을 제공합니다.
               더 많은 글로벌 학생들이 더 오래 한국에 머물 수 있도록
-              돕겠습니다.
+              돕겠습니다. VisaCampus 팀은 대학 행정 현장을 직접 연구하고,
+              국제처 담당자들의 실무 경험을 바탕으로 제품을 설계합니다.
+              출입국관리법, FIMS 연계 절차, IEQAS 평가 기준에 대한
+              깊은 이해를 토대로, 실제 업무에 즉시 적용 가능한 솔루션을
+              제공합니다.
             </p>
           </section>
 
@@ -150,6 +154,15 @@ export default function AboutPage() {
                 contact@visacampus.org
               </a>
               로 연락해주세요. 신청 후 2영업일 이내에 연락드립니다.
+            </p>
+          </section>
+
+          <section className="border-t border-gray-100 pt-6">
+            <p className="text-xs text-gray-400">
+              이 페이지는{" "}
+              <span className="font-medium text-gray-500">VisaCampus 팀</span>
+              {" "}(운영사: 불편함)이 작성하였습니다. 대학 국제처 실무 연구 및
+              출입국 행정 전문 지식을 바탕으로 콘텐츠를 제공합니다.
             </p>
           </section>
         </div>

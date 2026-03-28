@@ -1,33 +1,38 @@
 import type { MetadataRoute } from "next";
+import { headers } from "next/headers";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const headersList = await headers();
+  const host = headersList.get("host") ?? "www.visacampus.org";
+  const baseUrl = `https://${host}`;
+
   return [
     {
-      url: "https://www.visacampus.org",
+      url: baseUrl,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://www.visacampus.org/about",
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: "https://www.visacampus.org/policy/privacy",
+      url: `${baseUrl}/tos`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
-      url: "https://www.visacampus.org/tos",
+      url: `${baseUrl}/refund`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
-      url: "https://www.visacampus.org/refund",
+      url: `${baseUrl}/policy/privacy`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,

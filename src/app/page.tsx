@@ -664,7 +664,7 @@ const Solution = () => {
           엑셀 3개 열던 유학생 업무, 대시보드 하나로
         </h2>
         <p
-          className={`text-center text-indigo-200 text-sm sm:text-base mb-10 sm:mb-14 transition duration-700 delay-100 ${
+          className={`text-center text-indigo-100 text-sm sm:text-base mb-10 sm:mb-14 transition duration-700 delay-100 ${
             isInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -1008,9 +1008,17 @@ const CTAForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Honeypot check: bots fill hidden fields, humans don't
+    if (honeypot) {
+      setSubmitted(true);
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
 
@@ -1055,17 +1063,17 @@ const CTAForm = () => {
         <h2 className="font-display text-xl sm:text-3xl font-bold text-white mb-2 sm:mb-3 text-balance">
           15분 데모를 신청하세요
         </h2>
-        <p className="text-indigo-200 text-sm sm:text-base mb-8 sm:mb-10">
+        <p className="text-white/90 text-sm sm:text-base mb-8 sm:mb-10">
           신청 후 2영업일 이내에 데모 일정을 잡아드립니다.
         </p>
 
-        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-8 text-sm text-indigo-200">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-8 text-sm text-white/85">
           <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">1</span> 데모 신청</span>
-          <span className="text-indigo-400">→</span>
+          <span className="text-white/60">→</span>
           <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">2</span> 일정 확인</span>
-          <span className="text-indigo-400">→</span>
+          <span className="text-white/60">→</span>
           <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">3</span> 15분 시연</span>
-          <span className="text-indigo-400">→</span>
+          <span className="text-white/60">→</span>
           <span className="flex items-center gap-1"><span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">4</span> 파일럿 논의</span>
         </div>
 
@@ -1090,6 +1098,17 @@ const CTAForm = () => {
             className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl shadow-indigo-900/20"
             aria-label="데모 신청 양식"
           >
+            {/* Honeypot field: visually hidden but accessible to bots */}
+            <input
+              type="text"
+              name="website"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0 }}
+            />
             <div className="space-y-4 mb-6">
               <div>
                 <label htmlFor="email" className="block text-left text-sm font-medium text-gray-700 mb-1">
