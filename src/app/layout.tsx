@@ -62,10 +62,6 @@ export default function RootLayout({
                   email: "contact@visacampus.org",
                   description:
                     "대학 국제처를 위한 유학생 비자 관리 플랫폼",
-                  founder: {
-                    "@type": "Person",
-                    name: "이승은",
-                  },
                   contactPoint: {
                     "@type": "ContactPoint",
                     email: "contact@visacampus.org",
