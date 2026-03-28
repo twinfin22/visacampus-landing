@@ -1244,7 +1244,7 @@ const Footer = () => (
       </div>
 
       <div className="text-center text-gray-500 text-xs space-y-1 mb-4">
-        <p>불편함 | 대표 이승은 | 사업자등록번호 176-28-01765</p>
+        <p>불편함 | 사업자등록번호 176-28-01765</p>
       </div>
       <p className="text-center text-gray-500 text-xs">
         &copy; {new Date().getFullYear()} VisaCampus. All rights reserved.

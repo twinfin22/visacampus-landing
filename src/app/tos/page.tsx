@@ -441,7 +441,7 @@ export default function TosPage() {
           <div className="bg-gray-50 rounded-lg p-4">
             <ul className="space-y-1">
               <li>상호: 불편함</li>
-              <li>대표자: 이승은</li>
+              <li>대표자: 문의 contact@visacampus.org</li>
               <li>소재지: [사업장 주소]</li>
               <li>사업자등록번호: [등록 후 기재]</li>
               <li>통신판매업 신고번호: [신고 후 기재]</li>

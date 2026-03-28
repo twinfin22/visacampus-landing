@@ -195,7 +195,7 @@ export default function AboutPage() {
             </Link>
           </nav>
           <div className="text-center text-gray-500 text-xs space-y-1 mt-6">
-            <p>불편함 | 대표 이승은 | 사업자등록번호 문의: contact@visacampus.org</p>
+            <p>불편함 | 사업자등록번호 문의: contact@visacampus.org</p>
           </div>
         </div>
       </footer>

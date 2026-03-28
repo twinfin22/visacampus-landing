@@ -547,7 +547,6 @@ export default function PrivacyPolicyPage() {
           <div className="bg-gray-50 rounded-lg p-4 mb-4">
             <p className="font-bold text-gray-800">개인정보 보호책임자</p>
             <ul className="mt-2 space-y-1">
-              <li>성명: 이승은</li>
               <li>직책: 대표</li>
               <li>
                 연락처:{" "}
