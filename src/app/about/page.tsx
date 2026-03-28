@@ -158,7 +158,7 @@ export default function AboutPage() {
           </section>
 
           <section className="border-t border-gray-100 pt-6">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-500">
               이 페이지는{" "}
               <span className="font-medium text-gray-500">VisaCampus 팀</span>
               {" "}(운영사: 불편함)이 작성하였습니다. 대학 국제처 실무 연구 및

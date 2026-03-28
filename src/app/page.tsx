@@ -1099,16 +1099,18 @@ const CTAForm = () => {
             aria-label="데모 신청 양식"
           >
             {/* Honeypot field: visually hidden but accessible to bots */}
-            <input
-              type="text"
-              name="website"
-              value={honeypot}
-              onChange={(e) => setHoneypot(e.target.value)}
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0 }}
-            />
+            <div style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
+              <label htmlFor="website">Leave empty</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
             <div className="space-y-4 mb-6">
               <div>
                 <label htmlFor="email" className="block text-left text-sm font-medium text-gray-700 mb-1">
